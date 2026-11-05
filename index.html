@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7f7f6"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="NinFiv">
 <title>NinFiv</title>
-	<link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json">
 <style>
   /* --- 纯样式修复：强制间距、强制16px、强制头像 --- */
 #chat .msg {
@@ -1267,7 +1267,6 @@ const link=document.createElement('link');link.rel='manifest';link.href=URL.crea
 }
 async function init(){
 try{
-setupManifest();
 await load();
 if(!DB.settings.fontFamily)DB.settings.fontFamily='system';
 if(!DB.settings.chatFs)DB.settings.chatFs=DB.settings.fs||15;
