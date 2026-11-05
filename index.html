@@ -582,14 +582,23 @@ if (m.role !== 'user') {
     metaHtml += `<button class="cp" title="复制">${ic('copy')}</button><button class="rt" title="重试">${ic('refresh')}</button><button class="rm" title="删除">${ic('trash')}</button>`;
     if (tokenStr) metaHtml += `<span style="margin-left:auto;opacity:0.6">${tokenStr}</span>`;
 } else {
-    metaHtml += `<button class="cp" title="复制">${ic('copy')}</button><button class="rm" title="删除">${ic('trash')}</button>`;
-}
+    metaHtml += `<button class="cp" title="复制">${ic('copy')}</button><button class="ed" title="编辑">${ic('edit')}</button><button class="rm" title="删除">${ic('trash')}</button>`;
+  }
 h+=`<div class="meta">${metaHtml}</div>`;
 d.innerHTML=h;
 d.querySelectorAll('.meta svg').forEach(s=>{s.style.width=s.style.height='16px'});
 d.querySelector('.cp').onclick=()=>{
 if(navigator.clipboard)navigator.clipboard.writeText(m.content).then(()=>toast('已复制'))};
-const rtBtn = d.querySelector('.rt');
+const edBtn=d.querySelector('.ed');
+if(edBtn)edBtn.onclick=()=>{
+  const dlg=dialog('编辑消息','<textarea id="emsg" rows="6"></textarea>',x=>{
+    const v=x.querySelector('#emsg').value.trim();
+    if(!v)return false;
+    m.content=v;save();renderChat();
+  },'保存');
+  dlg.querySelector('#emsg').value=m.content;
+};
+    const rtBtn = d.querySelector('.rt');
 if(rtBtn) rtBtn.onclick=()=>retryMsg(m);
 d.querySelector('.rm').onclick=()=>ask('删除这条消息？',()=>{
 const c=curConv();c.msgs=c.msgs.filter(x=>x.id!==m.id);save();renderChat()});
