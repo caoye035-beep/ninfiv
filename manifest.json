@@ -1,0 +1,11 @@
+{
+"name":"NinFiv",
+"short_name":"NinFiv",
+"description":"NinFiv AI 聊天助手",
+"start_url":"./",
+"scope":"./",
+"display":"standalone",
+"background_color":"#f7f7f6",
+"theme_color":"#f7f7f6",
+"icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]
+}
